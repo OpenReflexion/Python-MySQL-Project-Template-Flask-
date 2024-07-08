@@ -6,6 +6,7 @@ from flask import jsonify
 from src.config.logging import logger  # Importer le logger configuré
 from src.config.path_config import PathConfig  # Importer la classe PathConfig
 from src.routers.auth_router import auth_bp
+from src.routers.user_router import user_bp 
 from flask_migrate import Migrate
 from src.config.database import sync_engine, Base  # Importer la configuration synchrone de la base de données
 from src.models import db  # Importer l'instance db de models
@@ -51,6 +52,7 @@ jwt = JWTManager(app)
 
 # Enregistrement du blueprint
 app.register_api(auth_bp)
+app.register_api(user_bp)
 
 @app.errorhandler(UnauthorizedError)
 def handle_unauthorized_error(error):
