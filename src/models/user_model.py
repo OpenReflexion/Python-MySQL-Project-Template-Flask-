@@ -1,8 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
+from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
-
-db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.String(36), primary_key=True, index=True, default=lambda: str(uuid.uuid4()))
